@@ -1,0 +1,29 @@
+#app {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#capacity {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#capacity td, #capacity th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#capacity tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#capacity tbody tr:hover {
+  background-color: #ddd;
+}
+
+#capacity th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04a5aa;
+  color: white;
+}
