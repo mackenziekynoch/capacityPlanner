@@ -1,7 +1,7 @@
 import React from 'react';
 import CapacityEntry from './CapacityEntry.jsx';
 
-const CapacityTable = (props) => {
+const CapacityTable = ({data}) => {
   return (
     <table id='capacity'>
       <thead>
@@ -25,7 +25,7 @@ const CapacityTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        <CapacityEntry />
+        { data.map(entry => <CapacityEntry key={entry.id} data={entry}/>) }
       </tbody>
     </table>
   );

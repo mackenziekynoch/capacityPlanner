@@ -1,21 +1,21 @@
 import React from 'react';
 
-const CapacityEntry = (props) => {
+const CapacityEntry = ({data}) => {
   return (
     <tr>
-      <td>Backlogged</td>
-      <td>In Progress</td>
-      <td>PI Qualtrics</td>
-      <td>QDI MVP2</td>
-      <td>Build MVP2 for QDI project - automated for all new surveys &amp; responses</td>
-      <td>45</td>
-      <td>8</td>
-      <td>0.15</td>
-      <td>27%</td>
-      <td>Mackenzie</td>
-      <td>Mackenzie</td>
-      <td>Mackenzie</td>
-      <td>Mackenzie</td>
+      <td>{data.startStatus}</td>
+      <td>{data.currentStatus}</td>
+      <td>{data.workstream}</td>
+      <td>{data.project}</td>
+      <td>{data.description}</td>
+      <td>{data.scopedEffortRemaining}</td>
+      <td>{data.estimatedWeeksDelivery}</td>
+      <td>{data.projectMgmtConstant}</td>
+      <td>{data.weeklyPlannedCapacity}</td>
+      <td>{data.tc}</td>
+      <td>{data.tpm}</td>
+      <td>{data.tl}</td>
+      <td>{data.pl}</td>
     </tr>
   );
 };
