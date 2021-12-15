@@ -6,7 +6,7 @@ const CapacityTable = ({data}) => {
     <table id='capacity'>
       <thead>
         <tr>
-          <th colSpan="13">Capacity Planner</th>
+          <th colSpan="13"></th>
         </tr>
         <tr>
           <td>Project Status (Start of Month)</td>
