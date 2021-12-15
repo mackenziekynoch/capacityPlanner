@@ -1,5 +1,5 @@
 import React from 'react';
-import CapacityTable from './CapacityTable.jsx';
+import CapacityTable from './table/CapacityTable.jsx';
 
 import mockData from '../../../database/mockData.js';
 
