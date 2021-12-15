@@ -26,19 +26,20 @@ const CapacityEntry = ({data}) => {
 
   const keyPressHandler = (e) => {
     if (e.key === 'Enter') {
+      changeLocalData(e.target);
       const isEditCp = resetEditingState();
       setIsEdit(isEditCp);
     }
   };
 
-  const changeHandler = (e) => {
+  const changeLocalData = (target) => {
     const dataCp = _.clone(localData);
-    dataCp[e.target.className] = e.target.value;
+    dataCp[target.className] = target.value;
     setLocalData(dataCp);
   };
 
   return (
-    <tr onClick={clickHandler} onKeyPress={keyPressHandler} onChange={changeHandler}>
+    <tr onClick={clickHandler} onKeyPress={keyPressHandler}>
       {Object.entries(localData).map((cellData, i) => {
         if (cellData[0] == 'id') return null;
         return <CapacityCell role={cellData[0]} data={cellData[1]} isEdit={isEdit[cellData[0]]} key={cellData[0]} />
