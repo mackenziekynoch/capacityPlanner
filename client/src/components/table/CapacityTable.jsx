@@ -1,12 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import CapacityEntry from './CapacityEntry.jsx';
+import _ from 'lodash';
 
 const CapacityTable = ({data}) => {
+  const [localData, setLocalData] = useState(data);
+
+  const handleAddition = (e) => {
+    const keys = Object.keys(localData[0]);
+    const nextDataPt = keys.reduce((memo, key) => {
+      memo[key] = '';
+      return memo;
+    }, {});
+
+    const dataCopy = _.clone(localData);
+    dataCopy.push(nextDataPt);
+    setLocalData(dataCopy);
+  }
   return (
     <table id='capacity'>
       <thead>
         <tr>
-          <th colSpan="13"></th>
+          <th colSpan="12"></th>
+          <th><button id='capacityAddNew' onClick={handleAddition}>+</button></th>
         </tr>
         <tr>
           <td>Project Status (Start of Month)</td>
@@ -25,7 +40,7 @@ const CapacityTable = ({data}) => {
         </tr>
       </thead>
       <tbody>
-        { data.map(entry => <CapacityEntry key={entry.id} data={entry}/>) }
+        { localData.map(entry => <CapacityEntry key={entry.id} data={entry}/>) }
       </tbody>
     </table>
   );
