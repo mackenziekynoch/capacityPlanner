@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CapacityCell = ({data, role}) => {
+const CapacityCell = ({data, role, id}) => {
 
   return (
-    <td className={role}>
+    <td className={role} id={id}>
       {data}
     </td>
   );

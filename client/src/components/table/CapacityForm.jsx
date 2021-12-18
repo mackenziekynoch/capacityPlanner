@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 const CapacityForm = ({data}) => {
+  console.log(data)
   const [startStatus, setStartStatus] = useState(data.startStatus);
   const [currentStatus, setCurrentStatus] = useState(data.currentStatus);
   const [workstram, setWorkstream] = useState(data.workstram);
@@ -9,11 +10,16 @@ const CapacityForm = ({data}) => {
   const [scopedEffortRemaining, setScopedEffort] = useState(data.scopedEffortRemaining);
   const [estimatedWeeksDelivery, setEstWeeksDelivery] = useState(data.estimatedWeeksDelivery);
   const [projectMgmtConstant, setProjectMgmtConstant] = useState(data.projectMgmtConstant);
-  const weeklyPlannedCapacity = (scopedEffortRemaining * projectMgmtConstant / estimatedWeeksDelivery) / 40;
+  const weeklyPlannedCapacity = Math.round((scopedEffortRemaining * projectMgmtConstant / estimatedWeeksDelivery) / 40 * 100); // eventually pull from CONFIG
   const [tc, setTc] = useState(data.tc);
   const [tpm, setTpm] = useState(data.tpm);
   const [tl, setTl] = useState(data.tl);
   const [pl, setPl] = useState(data.pl);
+
+  // eventually pull from CONFIG
+  const allowableStatuses = ['Backlogged', 'To Do', 'Requires Client Action', 'In Progress', 'Done'];
+  const workstreams = ['PI Loyalty', 'PI CEI', 'PI Qualtrics', 'WI CEI', 'WI Planned Sponsor'];
+  const teammates = ['AG', 'CL', 'HB', 'JD', 'JM', 'KJ', 'MK'];
 
   return (
     <form className='capacityForm'>
@@ -22,35 +28,25 @@ const CapacityForm = ({data}) => {
       <h4>Status</h4>
       <label>Start Status:
         <select id='startStatus' name='startStatus' defaultValue={startStatus} onChange={setStartStatus}>
-          <option value='backlogged'>Backlogged</option>
-          <option value='todo'>To Do</option>
-          <option value='reqclientaction'>Requires Client Action</option>
-          <option value='inprogress'>In Progress</option>
-          <option value='done'>Done</option>
+          {allowableStatuses.map(entry => (
+            <option key={entry} value={entry}>{entry}</option>
+          ))}
         </select>
       </label>
       <label>Current Status:
         <select id='currentStatus' name='currentStatus' defaultValue={currentStatus} onChange={setCurrentStatus}>
-          <option value='backlogged'>Backlogged</option>
-          <option value='todo'>To Do</option>
-          <option value='reqclientaction'>Requires Client Action</option>
-          <option value='inprogress'>In Progress</option>
-          <option value='done'>Done</option>
+          {allowableStatuses.map(entry => (
+            <option key={entry} value={entry}>{entry}</option>
+          ))}
         </select>
       </label>
       <hr />
       <h4>Project Information</h4>
       <label>Workstream:
         <select id='workstream' name='workstream' defaultValue={workstram} onChange={setWorkstream}>
-          <optgroup label='PI'>
-            <option value='piloyalty'>PI Loyalty</option>
-            <option value='picei'>PI CEI</option>
-            <option value='piqualtrics'>PI Qualtrics</option>
-          </optgroup>
-          <optgroup label='WI'>
-            <option value='wicei'>WI CEI</option>
-            <option value='wiplannedsponsor'>WI Planned Sponsor</option>
-          </optgroup>
+          {workstreams.map(entry => (
+            <option key={entry} value={entry}>{entry}</option>
+          ))}
         </select>
       </label>
       <label>Project:
@@ -71,52 +67,36 @@ const CapacityForm = ({data}) => {
         <input id='projectMgmtConstant' name='projectMgmtConstant' defaultValue={projectMgmtConstant} type='number' step='0.5' onChange={setProjectMgmtConstant}></input>
       </label>
       <label>Weekly Planned Capacity:
-        <input id='weeklyPlannedCapacity' name='weeklyPlannedCapacity' defaultValue={weeklyPlannedCapacity} type='number' readOnly='true'></input>
+        <input id='weeklyPlannedCapacity' name='weeklyPlannedCapacity' defaultValue={weeklyPlannedCapacity} type='number' readOnly={true}></input>
       </label>
       <hr />
       <h4>Teammate Roles</h4>
       <label>TC:
         <select id='tc' name='tc' defaultValue={tc} onChange={setTc}>
-          <option value='ag'>AG</option>
-          <option value='cl'>CL</option>
-          <option value='hb'>HB</option>
-          <option value='jd'>JD</option>
-          <option value='jm'>JM</option>
-          <option value='kj'>KJ</option>
-          <option value='mk'>MK</option>
+          {teammates.map(entry => (
+            <option key={entry} value={entry}>{entry}</option>
+          ))}
         </select>
       </label>
       <label>TPM:
         <select id='tpm' name='tpm' defaultValue={tpm} onChange={setTpm}>
-          <option value='ag'>AG</option>
-          <option value='cl'>CL</option>
-          <option value='hb'>HB</option>
-          <option value='jd'>JD</option>
-          <option value='jm'>JM</option>
-          <option value='kj'>KJ</option>
-          <option value='mk'>MK</option>
+          {teammates.map(entry => (
+            <option key={entry} value={entry}>{entry}</option>
+          ))}
         </select>
       </label>
       <label>TL:
         <select id='tl' name='tl' defaultValue={tl} onChange={setTl}>
-          <option value='ag'>AG</option>
-          <option value='cl'>CL</option>
-          <option value='hb'>HB</option>
-          <option value='jd'>JD</option>
-          <option value='jm'>JM</option>
-          <option value='kj'>KJ</option>
-          <option value='mk'>MK</option>
+          {teammates.map(entry => (
+            <option key={entry} value={entry}>{entry}</option>
+          ))}
         </select>
       </label>
       <label>PL:
         <select id='pl' name='pl' defaultValue={pl} onChange={setPl}>
-          <option value='ag'>AG</option>
-          <option value='cl'>CL</option>
-          <option value='hb'>HB</option>
-          <option value='jd'>JD</option>
-          <option value='jm'>JM</option>
-          <option value='kj'>KJ</option>
-          <option value='mk'>MK</option>
+          {teammates.map(entry => (
+            <option key={entry} value={entry}>{entry}</option>
+          ))}
         </select>
       </label>
     </form>
