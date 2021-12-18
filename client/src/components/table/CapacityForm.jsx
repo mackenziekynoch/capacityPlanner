@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 
 const CapacityForm = ({data}) => {
-  console.log(data)
   const [startStatus, setStartStatus] = useState(data.startStatus);
   const [currentStatus, setCurrentStatus] = useState(data.currentStatus);
   const [workstram, setWorkstream] = useState(data.workstram);
@@ -99,6 +98,8 @@ const CapacityForm = ({data}) => {
           ))}
         </select>
       </label>
+      <input type='button' value='Cancel' id='cancel'></input>
+      <input type='submit' value='Save' id='save'></input>
     </form>
   );
 };

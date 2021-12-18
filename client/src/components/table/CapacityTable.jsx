@@ -25,7 +25,10 @@ const CapacityTable = ({data}) => {
 
   return (
     <>
-      <table id='capacity'>
+      {editIndex !== null &&
+        <CapacityForm data={localData[editIndex]} />
+      }
+      <table id='capacity' className={editIndex !== null ? 'blur' : ''}>
         <thead>
           <tr>
             <th colSpan="12"></th>
@@ -51,9 +54,6 @@ const CapacityTable = ({data}) => {
           { localData.map(entry => <CapacityEntry key={entry.id} data={entry}/>) }
         </tbody>
       </table>
-      {editIndex !== null &&
-        <CapacityForm data={localData[editIndex]} />
-      }
     </>
   );
 };

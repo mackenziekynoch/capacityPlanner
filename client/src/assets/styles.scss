@@ -8,6 +8,65 @@ body {
   margin: 0;
 }
 
+.capacityForm {
+  position: absolute;
+  left: 0;
+  right: 0;
+  max-width: 40vw;
+  margin: 0 auto;
+  margin-top: 10px;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 1);
+  height: 35vh;
+  border: 1px solid rgb(77, 77, 77);
+  border-radius: 10px;
+  overflow: scroll;
+  padding-bottom: 10px;
+
+  h2 {
+    padding-top: 10px;
+    text-align: center;
+    font-weight: 200;
+    color:black;
+    font-size: 24px;
+    width: 100%;
+    height: 30px;
+    margin: 0;
+    color: white;
+    background-color: #037579;
+  }
+  hr {
+    padding: 0;
+    margin: 0;
+  }
+  h4 {
+    padding: 0 10px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  label {
+    padding: 0 20px;
+    font-size: 16px;
+  }
+  select {
+    appearance: none;
+    margin: 0 10px 10px 10px;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+    outline: none;
+  }
+
+  input {
+    margin-left: 10px;
+  }
+
+}
+
+.blur {
+  filter: blur(2px);
+}
+
 #capacity {
   margin: 0;
   padding: 0;
