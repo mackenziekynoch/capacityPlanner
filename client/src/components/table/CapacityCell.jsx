@@ -1,6 +1,18 @@
 import React from 'react';
 
 const CapacityCell = ({data, isEdit, role}) => {
+
+  const inputComponent = constructInputType(role, data);
+  return (
+    <td className={role}>
+      {!isEdit && data}
+      {/* {isEdit && <input className={role} type={type} defaultValue={data}></input>} */}
+      {isEdit && inputComponent}
+    </td>
+  );
+};
+
+const constructInputType = (role, data) => {
   let inputComponent;
   switch (role) {
     case 'startStatus':
@@ -39,14 +51,7 @@ const CapacityCell = ({data, isEdit, role}) => {
     default:
       inputComponent = <input className={`capacityCell ${role}`} type='text' defaultValue={data}></input>;
   };
-
-  return (
-    <td className={role}>
-      {!isEdit && data}
-      {/* {isEdit && <input className={role} type={type} defaultValue={data}></input>} */}
-      {isEdit && inputComponent}
-    </td>
-  );
+  return inputComponent;
 };
 
 export default CapacityCell;

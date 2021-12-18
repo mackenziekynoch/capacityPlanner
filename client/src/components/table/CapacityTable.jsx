@@ -31,7 +31,7 @@ const CapacityTable = ({data}) => {
           <td>Description</td>
           <td>Scoped Effort Remaining</td>
           <td>Estimated Weeks to Deliver</td>
-          <td>Project Management (Constant)</td>
+          <td>Project Management</td>
           <td>Weekly Planned Capacity</td>
           <td>TC</td>
           <td>TPM</td>
