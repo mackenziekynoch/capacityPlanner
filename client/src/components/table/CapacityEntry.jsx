@@ -18,18 +18,10 @@ const CapacityEntry = ({data}) => {
 
   const resetEditingState = () => {
     const isEditCp = _.clone(isEdit);
-      Object.keys(isEditCp).forEach(item => {
-        isEditCp[item] = false;
-      })
-      return isEditCp;
-  };
-
-  const keyPressHandler = (e) => {
-    if (e.key === 'Enter') {
-      changeLocalData(e.target);
-      const isEditCp = resetEditingState();
-      setIsEdit(isEditCp);
-    }
+    Object.keys(isEditCp).forEach(item => {
+      isEditCp[item] = false;
+    })
+    return isEditCp;
   };
 
   const changeLocalData = (target) => {
@@ -39,10 +31,10 @@ const CapacityEntry = ({data}) => {
   };
 
   return (
-    <tr onClick={clickHandler} onKeyPress={keyPressHandler}>
+    <tr onClick={clickHandler}>
       {Object.entries(localData).map((cellData, i) => {
         if (cellData[0] == 'id') return null;
-        return <CapacityCell role={cellData[0]} data={cellData[1]} isEdit={isEdit[cellData[0]]} key={cellData[0]} />
+        return <CapacityCell role={cellData[0]} data={cellData[1]} key={cellData[0]} />
       })}
     </tr>
   );
